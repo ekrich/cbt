@@ -1,7 +1,6 @@
 package cbt
 import org.scalatest._
 
-
 trait ScalaTest extends BaseBuild{
   override def run: ExitCode = {
     import ScalaTestLib._
@@ -9,7 +8,9 @@ trait ScalaTest extends BaseBuild{
     runSuites( suiteNames.map( loadSuite( _, classLoader ) ) )
     ExitCode.Success
   }
-  override def dependencies = super.dependencies ++ Resolver( mavenCentral ).bind( ScalaDependency("org.scalatest","scalatest","2.2.4") )
+  override def dependencies = super.dependencies ++ Resolver( mavenCentral ).bind(
+    ScalaDependency("org.scalatest","scalatest",cbt_plugins.scalaTest.BuildInfo.scalaTestVersion)
+  )
 }
 
 object ScalaTestLib{
