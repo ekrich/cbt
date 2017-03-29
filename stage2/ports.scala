@@ -5,4 +5,5 @@ class ports( context: Context ) {
     None
   )
   def mima = dep( "migration-manager" )
+  def scalariform = dep( "scalariform" )
 }
